@@ -8,25 +8,23 @@ const FormikForm = ({ errors, touched, values }) => {
     <div className="form">
       <h1>Fill out form!</h1>
       {/* <Formik> */}
-        <Form>
-          <Field type="text" name="name" placeholder="Name" />
-          {touched.name && errors.name && (
-            <p className="error">{errors.name}</p>
-          )}
-          <Field type="email" name="email" placeholder="Email" />
-          {touched.email && errors.email && (
-            <p className="error">{errors.email}</p>
-          )}
-          <Field type="password" name="password" placeholder="Password" />
-          {touched.password && errors.password && (
-            <p className="error">{errors.password}</p>
-          )}
-          <label className="checkbox-container">
-            Terms Of Service
-            <Field type="checkbox" name="tos" checked={values.tos} />
-          </label>
-          <button type="submit">Submit</button>
-        </Form>
+      <Form>
+        <Field type="text" name="name" placeholder="Name" />
+        {touched.name && errors.name && <p className="error">{errors.name}</p>}
+        <Field type="email" name="email" placeholder="Email" />
+        {touched.email && errors.email && (
+          <p className="error">{errors.email}</p>
+        )}
+        <Field type="password" name="password" placeholder="Password" />
+        {touched.password && errors.password && (
+          <p className="error">{errors.password}</p>
+        )}
+        <label className="checkbox-container">
+          Terms Of Service
+          <Field type="checkbox" name="tos" checked={values.tos} />
+        </label>
+        <button type="submit">Submit</button>
+      </Form>
       {/* </Formik> */}
     </div>
   );
@@ -53,12 +51,11 @@ const NewFormikForm = withFormik({
 
   handleSubmit(values) {
     console.log("Form", values);
+
+    axios
+      .post(`https://reqres.in/api/users/`, values)
+      .then(res => console.log(res));
   }
 })(FormikForm);
 
 export default NewFormikForm;
-
-// axios
-// .post(`https://reqres.in/api/users/`, values)
-// .then(res => console.log(res));
-// }
