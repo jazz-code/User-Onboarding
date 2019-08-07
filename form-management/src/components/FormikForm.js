@@ -31,6 +31,16 @@ const FormikForm = ({ errors, touched, values, status }) => {
           <Field type="checkbox" name="tos" checked={values.tos} />
           <span className="checkmark" />
         </label>
+
+        <Field
+          component="textarea"
+          type="text"
+          name="notes"
+          placeholder="Notes"
+        />
+        {touched.notes && errors.notes && (
+          <p className="error">{errors.notes}</p>
+        )}
         <button type="submit">Submit</button>
       </Form>
       {/* </Formik> */}
@@ -47,12 +57,13 @@ const FormikForm = ({ errors, touched, values, status }) => {
 };
 
 const NewFormikForm = withFormik({
-  mapPropsToValues({ name, email, password, tos }) {
+  mapPropsToValues({ name, email, password, tos, notes }) {
     return {
       name: name || "",
       email: email || "",
       password: password || "",
-      tos: tos || false
+      tos: tos || false,
+      notes: notes || ""
     };
   },
   // .email("Email not valid") / .name()
