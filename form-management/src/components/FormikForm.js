@@ -29,6 +29,7 @@ const FormikForm = ({ errors, touched, values, status }) => {
         <label className="checkbox-container">
           Terms Of Service
           <Field type="checkbox" name="tos" checked={values.tos} />
+          <span className="checkmark" />
         </label>
         <button type="submit">Submit</button>
       </Form>
