@@ -13,7 +13,7 @@ const FormikForm = ({ errors, touched, values, status }) => {
   }, [status]);
   return (
     <div className="form">
-      <h1>Fill out form!</h1>
+      <h1>Fill out this form</h1>
       {/* <Formik> */}
       <Form>
         <Field type="text" name="name" placeholder="Name" />

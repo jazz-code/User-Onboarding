@@ -23,7 +23,7 @@ code {
 
 .form {
   width: 500px;
-  margin: 123px auto;
+  margin: 55px auto;
   border-radius: 46px;
   padding: 25px;
   background-color: rgb(233, 168, 84);
@@ -32,6 +32,10 @@ code {
 
 h1 {
   color: rgb(105, 77, 40);
+  border-bottom: 2px solid aliceblue;
+  margin: 10px auto;
+  padding: 10px 0;
+  width: 103%;
 }
 
 .error {
