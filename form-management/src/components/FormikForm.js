@@ -34,7 +34,12 @@ const FormikForm = ({ errors, touched, values, status }) => {
       </Form>
       {/* </Formik> */}
       {userForm.map(users => {
-        return <p key={users.id}>{users.name}</p>;
+        return (
+          <div>
+            <h3>Username</h3>
+            <p key={users.id}>{users.name}</p>
+          </div>
+        );
       })}
     </div>
   );
@@ -59,12 +64,16 @@ const NewFormikForm = withFormik({
     tos: Yup.bool().oneOf([true], "Terms of Service is required")
   }),
   //get setStatus
-  handleSubmit(values, { setStatus }) {
+  handleSubmit(values, { resetForm, setErrors, setStatus }) {
     console.log("Form", values);
-
-    axios
-      .post(`https://reqres.in/api/users/`, values)
-      .then(res => setStatus(res.data));
+    if (values.email === "waffle@syrup.com") {
+      setErrors({ email: "That email is already taken" });
+    } else {
+      axios
+        .post(`https://reqres.in/api/users/`, values)
+        .then(res => setStatus(res.data));
+      resetForm();
+    }
   }
 })(FormikForm);
 
